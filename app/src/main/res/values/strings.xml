@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Books</string>
+    <string name="year_written">year_written</string>
+    <string name="author">Author</string>
+    <string name="name">Name</string>
+    <string name="_2008">2008</string>
+</resources>
