@@ -18,6 +18,7 @@ class HomeFragment : Fragment() {
     private lateinit var viewPager2 : ViewPager2
 
     private lateinit var binding: FragmentHomeBinding
+    private var genres = arrayOf("All", "Arts", "Biography", "Romance", "Thriller", "Fiction", "Crime", "Religious", "Mystery", "Drama", "Poetry")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,11 +28,12 @@ class HomeFragment : Fragment() {
         tabLayout = binding.tabLayout
         viewPager2 = binding.viewPager
 
-        val adapter = GenreFragmentAdapter(childFragmentManager, lifecycle)
+        val adapter = GenreFragmentAdapter(parentFragmentManager, lifecycle, genres)
         viewPager2.adapter = adapter
 
         TabLayoutMediator(tabLayout, viewPager2){tab, position->
-            tab.text = Genre.values()[position].nomi
+            tab.text = genres[position]
+            tab.setIcon(R.drawable.home_icon)
         }.attach()
 
     }

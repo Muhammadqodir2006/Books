@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import uz.itschool.books.Genre
 import uz.itschool.books.R
 
-class GenreFragment(genre:Genre) : Fragment() {
+class GenreFragment(genre:String) : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -31,7 +31,6 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.tabs.TabLayout
-        app:tabGravity="fill"
         android:id="@+id/tabLayout"
         android:layout_width="0dp"
         app:tabIndicatorAnimationMode="elastic"
