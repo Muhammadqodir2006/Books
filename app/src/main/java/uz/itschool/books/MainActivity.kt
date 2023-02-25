@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         tabLayout = binding.tabLayout
         viewPager2 = binding.viewpager
 
-        val adapter = FragmentAdapter(supportFragmentManager, lifecycle)
+        val adapter = FragmentAdapter(applicationContext, supportFragmentManager, lifecycle)
 
         viewPager2.adapter = adapter
 
