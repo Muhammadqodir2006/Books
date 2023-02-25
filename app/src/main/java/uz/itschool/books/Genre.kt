@@ -8,6 +8,7 @@ enum class Genre(var nomi:String) {
     THRILLER("Thriller"),
     FICTION("Fiction"),
     CRIME("Crime"),
+    PHYLOSOPHY("Phylosophy"),
     RELIGIOUS("Religious"),
     MYSTERY("Mystery"),
     DRAMA("Drama"),

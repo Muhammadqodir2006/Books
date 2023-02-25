@@ -16,12 +16,19 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+
+
+
+
+
+
         setContentView(binding.root)
 
         tabLayout = binding.tabLayout
         viewPager2 = binding.viewpager
 
         val adapter = FragmentAdapter(supportFragmentManager, lifecycle)
+
         viewPager2.adapter = adapter
 
         TabLayoutMediator(tabLayout, viewPager2){tab, position->
