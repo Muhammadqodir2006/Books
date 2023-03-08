@@ -16,8 +16,8 @@ import uz.itschool.books.R
 class MyLibraryRecyclerAdapter(val context: Context) : RecyclerView.Adapter<MyLibraryRecyclerAdapter.ViewHolder>() {
     private val bookList = BookAPI.getMyLibrary()
     inner class ViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView){
-        val image:ImageView = itemView.findViewById(R.id.image)
-        val bookName:TextView = itemView.findViewById(R.id.bookName)
+        val image:ImageView = itemView.findViewById(R.id.imagE_lib)
+        val bookName:TextView = itemView.findViewById(R.id.bookName_lib)
 
     }
 

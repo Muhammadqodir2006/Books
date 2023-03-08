@@ -1,4 +1,4 @@
-package uz.itschool.books.library
+package uz.itschool.books.home
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -11,16 +11,16 @@ import coil.api.load
 import uz.itschool.books.BookAPI
 import uz.itschool.books.R
 
-class MyWishlistRecyclerAdapter1(val context: Context) : RecyclerView.Adapter<MyWishlistRecyclerAdapter1.ViewHolder>() {
+class BooksRecycler(val context: Context) : RecyclerView.Adapter<BooksRecycler.ViewHolder>() {
     private val bookList = BookAPI.getMyWishList()
     inner class ViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView){
-        val image:ImageView = itemView.findViewById(R.id.shapeableImageView2)
-        val bookName:TextView = itemView.findViewById(R.id.textView4)
-        val authorName:TextView = itemView.findViewById(R.id.textView5)
+        val image:ImageView = itemView.findViewById(R.id.imagE)
+        val bookName:TextView = itemView.findViewById(R.id.bookName)
+        val authorName:TextView = itemView.findViewById(R.id.author)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.my_wishlist_recyclerview_item, parent, false))
+        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.home_book_item, parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
