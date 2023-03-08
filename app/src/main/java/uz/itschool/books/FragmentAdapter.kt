@@ -7,7 +7,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import uz.itschool.books.comments.CommentsFragment
 import uz.itschool.books.home.HomeFragment
-import uz.itschool.books.library.MyLibraryFragment
+import uz.itschool.books.library.MyLibraryFragmentActivity
 
 class FragmentAdapter(var context: Context, fragmentManager: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fragmentManager, lifecycle) {
     override fun getItemCount(): Int {
@@ -17,7 +17,7 @@ class FragmentAdapter(var context: Context, fragmentManager: FragmentManager, li
     override fun createFragment(position: Int): Fragment {
         return when (position){
             0 ->{
-                MyLibraryFragment(context)
+                MyLibraryFragmentActivity(context)
             }
             1 ->{
                 HomeFragment()

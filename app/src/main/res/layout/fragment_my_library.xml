@@ -5,7 +5,7 @@
 
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".library.MyLibraryFragment">
+    tools:context=".library.MyLibraryFragmentActivity">
 
     <TextView
         android:id="@+id/hiUser"
@@ -29,8 +29,8 @@
         app:layout_constraintTop_toBottomOf="@+id/hiUser" />
 
 
-    <ListView
-        android:id="@+id/myLibrary_listView1"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/myLibrary_recyclerView"
         android:orientation="horizontal"
         android:layout_width="0dp"
         android:layout_height="160dp"
@@ -48,10 +48,11 @@
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/guideline1"
-        app:layout_constraintTop_toBottomOf="@+id/myLibrary_listView1" />
+        app:layout_constraintTop_toBottomOf="@+id/myLibrary_recyclerView" />
 
 
-    <GridView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/myWishList_recyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
