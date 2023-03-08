@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import uz.itschool.books.comments.CommentsFragment
-import uz.itschool.books.home.HomeFragment
+import uz.itschool.books.home.HomeFragmentActivity
 import uz.itschool.books.library.MyLibraryFragmentActivity
 
 class FragmentAdapter(var context: Context, fragmentManager: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fragmentManager, lifecycle) {
@@ -20,7 +20,7 @@ class FragmentAdapter(var context: Context, fragmentManager: FragmentManager, li
                 MyLibraryFragmentActivity(context)
             }
             1 ->{
-                HomeFragment()
+                HomeFragmentActivity()
             }
             else ->{
                 CommentsFragment()

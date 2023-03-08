@@ -4,8 +4,11 @@
     <string name="author">Author</string>
     <string name="name">Name</string>
     <string name="_2008">2008</string>
+    <string name="by_creating_an_account_or_signing_you_agree_to_our"><u>By creating an account or signing you agree to our</u></string>
+    <string name="terms_and_conditions"><u>Terms and conditions</u></string>
     <string name="opens_side_menu">opens side menu</string>
     <string name="opens_notifications_page">opens notifications page</string>
+    <string name="about">Bu kitob lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum opens notifications page.</string>
     <string name="opens_scan_page">opens scan page</string>
     <string name="searchs_from_books">searchs from books</string>
     <string name="hi_user">Hi User</string>
@@ -23,4 +26,19 @@
     <string name="comments">Comments</string>
     <string name="home">Home</string>
     <string name="name_of_the_book">Name of the book</string>
+    <string name="log_in">Log in</string>
+    <string name="username_or_email">Username or email</string>
+    <string name="password">Password</string>
+    <string name="forgot_your_password"><u>Forgot your password ?</u></string>
+    <string name="sign_in">Sign in</string>
+    <string name="don_t_have_an_account"><u>Don\'t have an account ?</u></string>
+    <string name="sign_up">Sign up</string>
+    <string name="other_sign_in_options">Other sign in options</string>
+    <string name="logo">logo</string>
+    <string name="crate_account">Crate account</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="create_account">Create account</string>
+    <string name="log_out">Log out</string>
+    <string name="_1_500_reads">1 500 reads</string>
 </resources>

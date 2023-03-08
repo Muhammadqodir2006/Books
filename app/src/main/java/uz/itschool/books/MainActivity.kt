@@ -1,8 +1,12 @@
 package uz.itschool.books
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
+import android.widget.PopupMenu
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import uz.itschool.books.databinding.ActivityMainBinding
@@ -12,17 +16,18 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var tabLayout: TabLayout
     private lateinit var viewPager2: ViewPager2
+    private val intent = Intent()
+    private val loggedInUsername = intent.getStringExtra("loggedInUser")
+
+    private lateinit var menuButton : FloatingActionButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
 
-
-
-
-
-
         setContentView(binding.root)
+        menuButton = binding.menuButton
+
 
         tabLayout = binding.tabLayout
         viewPager2 = binding.viewpager
@@ -48,8 +53,17 @@ class MainActivity : AppCompatActivity() {
             }
         }.attach()
 
-
-
-
+        menuButton.setOnClickListener {
+            val popUp = PopupMenu(applicationContext, menuButton)
+            popUp.inflate(R.menu.main_menu)
+            popUp.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener {item: MenuItem? ->
+                val a = Intent(applicationContext, SignInActivity::class.java)
+                startActivity(a)
+                finish()
+                true
+            })
+            popUp.show()
+        }
     }
+
 }
