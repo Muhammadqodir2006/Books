@@ -9,10 +9,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import uz.itschool.books.BookAPI
+import uz.itschool.books.Genre
 import uz.itschool.books.R
 
-class BooksRecycler(val context: Context) : RecyclerView.Adapter<BooksRecycler.ViewHolder>() {
-    private val bookList = BookAPI.getMyWishList()
+class BooksRecycler(val context: Context, genre: Genre) : RecyclerView.Adapter<BooksRecycler.ViewHolder>() {
+    private val bookList = BookAPI.getBooks(genre)
     inner class ViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView){
         val image:ImageView = itemView.findViewById(R.id.imagE)
         val bookName:TextView = itemView.findViewById(R.id.bookName)
