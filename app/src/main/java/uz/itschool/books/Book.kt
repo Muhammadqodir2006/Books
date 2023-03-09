@@ -8,4 +8,4 @@ data class Book(
     var about: String,
     var rating: Double,
     var genre: Genre
-)
+):java.io.Serializable

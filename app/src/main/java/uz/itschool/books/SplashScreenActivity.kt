@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import uz.itschool.books.databinding.ActivitySplashScreenBinding
@@ -26,13 +27,14 @@ class SplashScreenActivity : AppCompatActivity() {
         val gson = Gson()
 
         val typeToken = object : TypeToken<User>(){}.type
-        if (data.isEmpty()) {
+        if (data == "") {
             startActivity(Intent(this, SignInActivity::class.java))
         }else {
             val user = gson.fromJson<User>(data, typeToken)
-            val intent = Intent()
+            val intent = Intent(this, CheckPassword::class.java)
             intent.putExtra("loggedInUser", user.username)
-            startActivity(Intent(this, MainActivity::class.java))
+            intent.putExtra("userPassword", user.password)
+            startActivity(intent)
         }
 
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)

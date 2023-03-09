@@ -1,6 +1,7 @@
 package uz.itschool.books.home
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,9 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
-import uz.itschool.books.BookAPI
-import uz.itschool.books.Genre
-import uz.itschool.books.R
+import uz.itschool.books.*
 
 class BooksRecycler(val context: Context, genre: Genre) : RecyclerView.Adapter<BooksRecycler.ViewHolder>() {
     private val bookList = BookAPI.getBooks(genre)
@@ -32,9 +31,27 @@ class BooksRecycler(val context: Context, genre: Genre) : RecyclerView.Adapter<B
             placeholder(R.drawable.logo2)
             error(R.drawable.logo1)
         }
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context, BookPageActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            putBook(book)
+            context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {
         return bookList.size
+    }
+    fun putBook(book: Book){
+        val intent = Intent()
+        val list = ArrayList<String>()
+        list.add(book.name)
+        list.add(book.author)
+        list.add(book.about)
+        list.add(book.year_written.toString())
+        list.add(book.genre.nomi)
+        list.add(book.rating.toString())
+        intent.putStringArrayListExtra("bookInfo", list)
+
     }
 }

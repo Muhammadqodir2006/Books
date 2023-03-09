@@ -9,6 +9,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import com.google.gson.Gson
 import uz.itschool.books.databinding.ActivityMainBinding
 import uz.itschool.books.library.MyLibraryRecyclerAdapter
 import uz.itschool.books.library.MyWishlistRecyclerAdapter1
@@ -39,6 +40,10 @@ class MainActivity : AppCompatActivity() {
                 tabLayout.selectTab(tabLayout.getTabAt(1), true)
             }
 
+            override fun startBookPage(book: Book) {
+                startActivity(Intent(applicationContext, BookPageActivity::class.java))
+            }
+
         })
 
         viewPager2.adapter = adapter
@@ -65,6 +70,12 @@ class MainActivity : AppCompatActivity() {
             popUp.inflate(R.menu.main_menu)
             popUp.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener {item: MenuItem? ->
                 val a = Intent(applicationContext, SignInActivity::class.java)
+
+                val sharedPreferences = getSharedPreferences("data", MODE_PRIVATE)
+                val edit = sharedPreferences.edit()
+
+                edit.putString("loggedInUser", "").apply()
+
                 startActivity(a)
                 finish()
                 true

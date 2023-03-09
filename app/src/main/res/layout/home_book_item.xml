@@ -25,6 +25,7 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/author"
+        app:layout_constraintEnd_toEndOf="@+id/imagE"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -38,9 +39,10 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
+        android:adjustViewBounds="true"
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
-        android:layout_height="20dp"
+        android:layout_height="10dp"
         android:src="@drawable/rating"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

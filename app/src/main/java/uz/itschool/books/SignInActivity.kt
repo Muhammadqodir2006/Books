@@ -62,7 +62,7 @@ class SignInActivity : AppCompatActivity() {
                 password1.text?.clear()
                 return@setOnClickListener
             }
-            if (id  > 0 && usersList[id].password != myPassword){
+            if (usersList[id].password != myPassword){
                 Toast.makeText(applicationContext, "Incorrect password", Toast.LENGTH_LONG).show()
                 password1.text?.clear()
                 return@setOnClickListener
@@ -73,7 +73,7 @@ class SignInActivity : AppCompatActivity() {
             val sharedPreferences = getSharedPreferences("data", MODE_PRIVATE)
             val edit = sharedPreferences.edit()
             val user:String = gson.toJson(loggedInUser)
-            edit.putString("users", user).apply()
+            edit.putString("loggedInUser", user).apply()
 
             val a  = Intent(applicationContext, MainActivity::class.java)
             a.putExtra("loggedInUser", loggedInUser.username)
@@ -85,6 +85,7 @@ class SignInActivity : AppCompatActivity() {
         signUp.setOnClickListener{
             val a = Intent(applicationContext, SignUpActivity::class.java)
             startActivity(a)
+            finish()
         }
 
     }

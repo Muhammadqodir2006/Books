@@ -41,4 +41,7 @@
     <string name="create_account">Create account</string>
     <string name="log_out">Log out</string>
     <string name="_1_500_reads">1 500 reads</string>
+    <string name="go">Go</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="hello">Hello</string>
 </resources>

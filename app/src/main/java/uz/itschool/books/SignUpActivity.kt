@@ -3,6 +3,7 @@ package uz.itschool.books
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
@@ -25,10 +26,29 @@ class SignUpActivity : AppCompatActivity() {
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         usersList = getUsers()
         username = binding.username
         password = binding.password
+        email = binding.email
         createAccount = binding.createAccount
+
+        onBackPressedDispatcher.addCallback(this,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    val gson = Gson()
+                    val sharedPreferences = getSharedPreferences("data", MODE_PRIVATE)
+                    val data: String = sharedPreferences.getString("loggedInUser", "")!!
+                    val typeToken = object  : TypeToken<ArrayList<User>>(){}.type
+                    if (data.isEmpty()) {
+                        startActivity(Intent(applicationContext, SignInActivity::class.java))
+                        finish()
+                    }
+                    startActivity(Intent(applicationContext, CheckPassword::class.java))
+                    finish()
+
+                }
+            })
 
         createAccount.setOnClickListener{
             val myUsername = username.text.toString().trim()
@@ -69,9 +89,9 @@ class SignUpActivity : AppCompatActivity() {
         val edit = sharedPreferences.edit()
         usersList.add(user)
         val list:String = gson.toJson(usersList)
+        edit.putString("loggedInUser",gson.toJson(user)).apply()
         edit.putString("users", list).apply()
         Toast.makeText(applicationContext, "Successfully signed up", Toast.LENGTH_SHORT).show()
-        finish()
         val a  = Intent(applicationContext, MainActivity::class.java)
         a.putExtra("loggedInUser", user.username)
         startActivity(a)
