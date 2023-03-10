@@ -35,7 +35,7 @@ class MyLibraryFragmentActivity(val contexT: Context, val discoverListener: MyLi
         myLibrary_recyclerView.adapter = MyLibraryRecyclerAdapter(contexT, discoverListener)
 
         myWishList_recyclerView.layoutManager = GridLayoutManager(contexT, 2, GridLayoutManager.VERTICAL, false)
-        myWishList_recyclerView.adapter = MyWishlistRecyclerAdapter1(contexT)
+        myWishList_recyclerView.adapter = MyWishlistRecyclerAdapter1(contexT, discoverListener)
 
         return binding.root
     }

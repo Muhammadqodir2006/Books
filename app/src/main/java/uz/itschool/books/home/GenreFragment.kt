@@ -12,8 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 import uz.itschool.books.Genre
 import uz.itschool.books.R
 import uz.itschool.books.databinding.FragmentGenreBinding
+import uz.itschool.books.library.MyLibraryRecyclerAdapter
 
-class GenreFragment(val genre:Genre, val contexT: Context) : Fragment() {
+class GenreFragment(val genre:Genre, val contexT: Context, val discoverListener: MyLibraryRecyclerAdapter.DiscoverListener) : Fragment() {
 
 
     override fun onCreateView(
@@ -24,7 +25,7 @@ class GenreFragment(val genre:Genre, val contexT: Context) : Fragment() {
         val recyler:RecyclerView = binding.booksRecyclerViewGenre
 
         recyler.layoutManager = GridLayoutManager(context, 3, GridLayoutManager.VERTICAL, false)
-        recyler.adapter = BooksRecycler(contexT, genre)
+        recyler.adapter = BooksRecycler(contexT, genre, discoverListener)
 
         return binding.root
     }

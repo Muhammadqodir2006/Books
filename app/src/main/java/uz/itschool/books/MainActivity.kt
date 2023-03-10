@@ -41,7 +41,9 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun startBookPage(book: Book) {
-                startActivity(Intent(applicationContext, BookPageActivity::class.java))
+                val i = Intent(applicationContext, BookPageActivity::class.java)
+                i.putExtra("book", book)
+                startActivity(i)
             }
 
         })

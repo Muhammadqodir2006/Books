@@ -22,7 +22,7 @@ class FragmentAdapter(var context: Context, fragmentManager: FragmentManager, li
                 MyLibraryFragmentActivity(context, discoverListener)
             }
             1 ->{
-                HomeFragmentActivity(context)
+                HomeFragmentActivity(context, discoverListener)
             }
             else ->{
                 CommentsFragment()

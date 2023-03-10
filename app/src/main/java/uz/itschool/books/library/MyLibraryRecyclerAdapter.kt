@@ -12,12 +12,11 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import uz.itschool.books.Book
 import uz.itschool.books.BookAPI
-import uz.itschool.books.BookPageActivity
 import uz.itschool.books.R
 
 class MyLibraryRecyclerAdapter(val context: Context, val discoverListener: DiscoverListener) :
     RecyclerView.Adapter<MyLibraryRecyclerAdapter.ViewHolder>() {
-    private val bookList = BookAPI.getMyLibrary()
+    private val bookList = BookAPI.getMyLibrary1()
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val image: ImageView = itemView.findViewById(R.id.imagE_lib)
@@ -44,7 +43,6 @@ class MyLibraryRecyclerAdapter(val context: Context, val discoverListener: Disco
         } else {
             val book = bookList[position]
             holder.itemView.setOnClickListener {
-                putBook(book)
                 discoverListener.startBookPage(book)
             }
             holder.bookName.text = book.name
@@ -64,16 +62,5 @@ class MyLibraryRecyclerAdapter(val context: Context, val discoverListener: Disco
         fun onClick()
         fun startBookPage(book: Book)
     }
-    fun putBook(book: Book){
-        val intent = Intent()
-        val list = ArrayList<String>()
-        list.add(book.name)
-        list.add(book.author)
-        list.add(book.about)
-        list.add(book.year_written.toString())
-        list.add(book.genre.nomi)
-        list.add(book.rating.toString())
-        intent.putStringArrayListExtra("bookInfo", list)
 
-    }
 }

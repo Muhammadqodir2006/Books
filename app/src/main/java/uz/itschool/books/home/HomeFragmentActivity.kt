@@ -12,8 +12,9 @@ import com.google.android.material.tabs.TabLayoutMediator
 import uz.itschool.books.Genre
 import uz.itschool.books.R
 import uz.itschool.books.databinding.FragmentHomeBinding
+import uz.itschool.books.library.MyLibraryRecyclerAdapter
 
-class HomeFragmentActivity(val contexT: Context) : Fragment(R.layout.fragment_home) {
+class HomeFragmentActivity(val contexT: Context,val discoverListener: MyLibraryRecyclerAdapter.DiscoverListener) : Fragment(R.layout.fragment_home) {
 
     private lateinit var tabLayout: TabLayout
     private lateinit var viewPager2: ViewPager2
@@ -30,7 +31,7 @@ class HomeFragmentActivity(val contexT: Context) : Fragment(R.layout.fragment_ho
         tabLayout = binding.tabLayout
         viewPager2 = binding.viewPager
 
-        val adapter = GenreFragmentAdapter(childFragmentManager, lifecycle, contexT)
+        val adapter = GenreFragmentAdapter(childFragmentManager, lifecycle, contexT, discoverListener)
 
 //        childFragmentManager.beginTransaction().apply {
 //            add(R.id.container, BlankFragment1())

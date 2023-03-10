@@ -9,11 +9,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
+import uz.itschool.books.Book
 import uz.itschool.books.BookAPI
 import uz.itschool.books.BookPageActivity
 import uz.itschool.books.R
 
-class MyWishlistRecyclerAdapter1(val context: Context) :
+class MyWishlistRecyclerAdapter1(val context: Context, val discoverListener: MyLibraryRecyclerAdapter.DiscoverListener) :
     RecyclerView.Adapter<MyWishlistRecyclerAdapter1.ViewHolder>() {
     private val bookList = BookAPI.getMyWishList()
 
@@ -39,18 +40,7 @@ class MyWishlistRecyclerAdapter1(val context: Context) :
             error(R.drawable.logo1)
         }
         holder.itemView.setOnClickListener {
-            val intent = Intent(context, BookPageActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-//            putBook(book)
-            val list = ArrayList<String>()
-            list.add(book.name)
-            list.add(book.author)
-            list.add(book.about)
-            list.add(book.year_written.toString())
-            list.add(book.genre.nomi)
-            list.add(book.rating.toString())
-            intent.putStringArrayListExtra("bookInfo", list)
-            context.startActivity(intent)
+            discoverListener.startBookPage(book)
         }
 
 
@@ -59,18 +49,7 @@ class MyWishlistRecyclerAdapter1(val context: Context) :
     override fun getItemCount(): Int {
         return bookList.size
     }
-//    fun putBook(book: Book){
-//        val intent = Intent()
-//        val list = ArrayList<String>()
-//        list.add(book.name)
-//        list.add(book.author)
-//        list.add(book.about)
-//        list.add(book.year_written.toString())
-//        list.add(book.genre.nomi)
-//        list.add(book.rating.toString())
-//        intent.putStringArrayListExtra("bookInfo", list)
-//
-//    }
+
 
 
 }

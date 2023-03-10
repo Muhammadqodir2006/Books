@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import coil.api.load
 import uz.itschool.books.databinding.ActivityBookPageBinding
 
 class BookPageActivity() : AppCompatActivity() {
@@ -18,8 +19,7 @@ class BookPageActivity() : AppCompatActivity() {
     private lateinit var readsCount: TextView
     private lateinit var about: TextView
 
-    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
-//    val bookInfo = intent.getStringArrayListExtra("bookInfo")!!
+    lateinit var book:Book
 
 
     private lateinit var bookBackImage: ImageView
@@ -31,17 +31,22 @@ class BookPageActivity() : AppCompatActivity() {
         binding = ActivityBookPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        bookBackImage = binding.bookBackImage
+        authorImage = binding.authorImage
+
+        book = intent.getSerializableExtra("book") as Book
         bookName = binding.bookName
         authorName = binding.authorName
         readsCount = binding.howManyReads
         about = binding.about
 
+        bookBackImage.load(book.image)
         binding.backButton.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
         }
 
-//        bookName.text = bookInfo[0]
-//        authorName.text = bookInfo[1]
-//        about.text = bookInfo[2]
+        bookName.text = book.name
+        authorName.text = book.author
+        about.text = book.about
     }
 }
