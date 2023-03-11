@@ -5,12 +5,15 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import uz.itschool.books.databinding.ActivitySplashScreenBinding
+import java.util.*
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreenActivity : AppCompatActivity() {
+    private lateinit var curLang : String
     private lateinit var binding : ActivitySplashScreenBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,10 +26,16 @@ class SplashScreenActivity : AppCompatActivity() {
     }
     private fun open(){
         val sharedPreferences = getSharedPreferences("data", MODE_PRIVATE)
+        val edit = sharedPreferences.edit()
         val data: String = sharedPreferences.getString("loggedInUser", "")!!
         val gson = Gson()
-
         val typeToken = object : TypeToken<User>(){}.type
+
+        curLang = sharedPreferences.getString("curLang", "")!!
+        setLocale("en")
+        edit.putString("curLang","en").apply()
+
+
         if (data == "") {
             startActivity(Intent(this, SignInActivity::class.java))
         }else {
@@ -39,5 +48,15 @@ class SplashScreenActivity : AppCompatActivity() {
 
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
         finish()
+    }
+    private fun setLocale(localeName: String) {
+        if (localeName != curLang) {
+            val locale = Locale(localeName)
+            val res = resources
+            val dm = res.displayMetrics
+            val conf = res.configuration
+            conf.locale = locale
+            res.updateConfiguration(conf, dm)
+        }
     }
 }

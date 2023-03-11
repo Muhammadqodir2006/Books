@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="by_creating_an_account_or_signing_you_agree_to_our"><u>Hisob yaratish orqali siz bizning shartlarimizga rozilik bildirasiz</u></string>
+    <string name="terms_and_conditions"><u>Shartlar va shartlar</u></string>
+    <string name="my_library">Mening kutubxonam</string>
+    <string name="my_wishlist">Istaklar</string>
+    <string name="categories">Kategoriyalar</string>
+    <string name="add_to_wishlist">Istaklar ro\'yhatiga qo\'shish</string>
+    <string name="discover_more">Ko\'proq</string>
+    <string name="comments">Fikrlar</string>
+    <string name="home">Bosh sahifa</string>
+    <string name="log_in">Tizimga kirish</string>
+    <string name="username_or_email">Username yoki email</string>
+    <string name="password">Parol</string>
+    <string name="forgot_your_password"><u>Parolni unitdingizmi ?</u></string>
+    <string name="sign_in">Kirish</string>
+    <string name="don_t_have_an_account"><u>Akkauntingiz yo\'qmi ?</u></string>
+    <string name="sign_up">Ro\'yhatdan o\'tish</string>
+    <string name="other_sign_in_options">Boshqa kirish imkoniyyatlari</string>
+    <string name="create_account">Akkaunt yaratish</string>
+    <string name="log_out">Tizimdan chiqish</string>
+    <string name="go">Ketdik</string>
+    <string name="enter_your_password">Parolni kiriting</string>
+    <string name="hello">Salom</string>
+</resources>

@@ -1,29 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">Books</string>
-    <string name="year_written" translatable="false">year_written</string>
-    <string name="author" translatable="false">Author</string>
-    <string name="name" translatable="false">Name</string>
-    <string name="_2008" translatable="false">2008</string>
     <string name="by_creating_an_account_or_signing_you_agree_to_our"><u>By creating an account or signing you agree to our</u></string>
     <string name="terms_and_conditions"><u>Terms and conditions</u></string>
     <string name="opens_side_menu" translatable="false">opens side menu</string>
-    <string name="opens_notifications_page" translatable="false">opens notifications page</string>
     <string name="about" translatable="false">Bu kitob lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum opens notifications page.</string>
-    <string name="opens_scan_page" translatable="false">opens scan page</string>
-    <string name="searchs_from_books" translatable="false">searchs from books</string>
-    <string name="hi_user" translatable="false">Hi User</string>
     <string name="my_library">My Library</string>
     <string name="my_wishlist">My Wishlist</string>
     <string name="categories">Categories</string>
     <string name="add_to_wishlist">Add to wishlist</string>
-    <string name="book_images" translatable="false">Book images</string>
-    <string name="book_name" translatable="false">Book name</string>
-    <string name="author_name" translatable="false">Author Name</string>
-    <string name="asd" translatable="false">|</string>
     <string name="discover_more">Discover more</string>
     <string name="comments">Comments</string>
     <string name="home">Home</string>
-    <string name="name_of_the_book" translatable="false">Name of the book</string>
     <string name="log_in">Log in</string>
     <string name="username_or_email">Username or email</string>
     <string name="password">Password</string>
@@ -32,15 +19,9 @@
     <string name="don_t_have_an_account"><u>Don\'t have an account ?</u></string>
     <string name="sign_up">Sign up</string>
     <string name="other_sign_in_options">Other sign in options</string>
-    <string name="logo" translatable="false">logo</string>
-    <string name="username" translatable="false">Username</string>
-    <string name="email" translatable="false">Email</string>
     <string name="create_account">Create account</string>
     <string name="log_out">Log out</string>
-    <string name="_1_500_reads" translatable="false">1 500 reads</string>
     <string name="go">Go</string>
     <string name="enter_your_password">Enter your password</string>
     <string name="hello">Hello</string>
-    <string name="o_zbekcha" translatable="false">O\'zbekcha</string>
-    <string name="english" translatable="false">English</string>
 </resources>
