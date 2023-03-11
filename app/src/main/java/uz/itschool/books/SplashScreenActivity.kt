@@ -32,8 +32,12 @@ class SplashScreenActivity : AppCompatActivity() {
         val typeToken = object : TypeToken<User>(){}.type
 
         curLang = sharedPreferences.getString("curLang", "")!!
-        setLocale("en")
-        edit.putString("curLang","en").apply()
+
+        if (curLang == ""){
+            curLang = "en"
+            edit.putString("curLang","en").apply()
+        }
+        setLocale(curLang)
 
 
         if (data == "") {
@@ -50,13 +54,11 @@ class SplashScreenActivity : AppCompatActivity() {
         finish()
     }
     private fun setLocale(localeName: String) {
-        if (localeName != curLang) {
             val locale = Locale(localeName)
             val res = resources
             val dm = res.displayMetrics
             val conf = res.configuration
             conf.locale = locale
             res.updateConfiguration(conf, dm)
-        }
     }
 }

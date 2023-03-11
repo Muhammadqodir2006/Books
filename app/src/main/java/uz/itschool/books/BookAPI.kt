@@ -1,7 +1,6 @@
 package uz.itschool.books
 
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -9,6 +8,7 @@ abstract class BookAPI {
     companion object {
         val books = initBooks()
         val myLibrary = ArrayList<Book>()
+
 
         fun getBooks(genre: Genre): ArrayList<Book> {
             val books = ArrayList<Book>()
@@ -114,29 +114,30 @@ abstract class BookAPI {
 
 
         fun getMyLibrary1(): ArrayList<Book> {
-            val books = ArrayList<Book>()
-            books.add(Book("Atomic Habits", "James Clear", 2015, "https://edit.org/photos/images/cat/book-covers-big-2019101610.jpg-1300.jpg", "Bu kitob lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum", 3.4, Genre.PHYLOSOPHY ))
-            books.add(Book("Atomic", "James Clear", 2015, "https://cdn.cp.adobe.io/content/2/rendition/9231d555-36b8-43cf-9270-e0adfb6a9564/artwork/ea997594-eee5-44dd-9a88-bc5fd31abb80/version/0/format/jpg/dimension/width/size/400", "Bu kitob lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum", 3.4, Genre.PHYLOSOPHY ))
-            books.add(Book("Habits", "James Clear", 2015, "https://i.pinimg.com/originals/a1/f8/87/a1f88733921c820db477d054fe96afbb.jpg", "Bu kitob lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum", 3.4, Genre.PHYLOSOPHY ))
-            books.add(Book("Atomic  12312", "James Clear", 2015, "https://www.creativeparamita.com/wp-content/uploads/2022/07/takes-time.jpg", "Bu kitob lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum", 3.4, Genre.PHYLOSOPHY ))
-            return books
+            return ArrayList()
         }
         fun getMyWishList(sharedPreferences: SharedPreferences): ArrayList<Book> {
-            val edit = sharedPreferences.edit()
             val data: String = sharedPreferences.getString("wishList", "")!!
             val gson = Gson()
             val typeToken = object : TypeToken<ArrayList<Book>>(){}.type
-            val wishList = ArrayList<Book>()
-
+            if (data == "") return ArrayList()
+            val wishList = gson.fromJson<ArrayList<Book>>(data, typeToken)
             return wishList
         }
-        fun updateWishList(book: Book): ArrayList<Book> {
-            if (wishLIst.contains(book)){
-                wishLIst.remove(book)
+        fun updateWishList(book: Book, sharedPreferences: SharedPreferences): ArrayList<Book> {
+            val wishList = getMyWishList(sharedPreferences)
+            if (wishList.contains(book)){
+                wishList.remove(book)
             }else{
-                wishLIst.add(book)
+                wishList.add(book)
             }
-            return wishLIst
+
+            val edit = sharedPreferences.edit()
+            val gson = Gson()
+
+            val new = gson.toJson(wishList)
+            edit.putString("wishList", new).apply()
+            return wishList
         }
     }
 }

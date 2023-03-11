@@ -3,7 +3,9 @@ package uz.itschool.books
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
+import android.view.WindowManager
 import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.viewpager2.widget.ViewPager2
@@ -40,21 +42,7 @@ class MainActivity : AppCompatActivity() {
 
         curLang = getCurLang()
 
-        val adapter = FragmentAdapter(applicationContext, supportFragmentManager, lifecycle, object :
-            MyLibraryRecyclerAdapter.DiscoverListener {
-            override fun onClick() {
-                tabLayout.selectTab(tabLayout.getTabAt(1), true)
-            }
-
-            override fun startBookPage(book: Book) {
-                val i = Intent(applicationContext, BookPageActivity::class.java)
-                i.putExtra("book", book)
-                startActivity(i)
-            }
-
-        })
-
-        viewPager2.adapter = adapter
+        viewPager2.adapter = getAdapter()
 
         TabLayoutMediator(tabLayout, viewPager2){tab, position->
             when (position){
@@ -90,6 +78,7 @@ class MainActivity : AppCompatActivity() {
                     }else if (popUp.menu.getItem(1) == item){
                         setLocale("en")
                     }
+
                 }
                 true
             })
@@ -119,15 +108,37 @@ class MainActivity : AppCompatActivity() {
             startActivity(refresh)
             putCurLang(localeName)
 
+
+
         } else {
             Toast.makeText(
-                this, curLang, Toast.LENGTH_SHORT).show();
+                this, "$curLang already active", Toast.LENGTH_SHORT).show();
         }
     }
     fun putCurLang(lang:String){
         val sharedPreferences = getSharedPreferences("data", MODE_PRIVATE)
         val edit = sharedPreferences.edit()
         edit.putString("curLang",lang).apply()
+    }
+
+    override fun onResume() {
+        viewPager2.adapter = getAdapter()
+        super.onResume()
+    }
+    private fun getAdapter(): FragmentAdapter {
+        return FragmentAdapter(applicationContext, supportFragmentManager, lifecycle, object :
+            MyLibraryRecyclerAdapter.DiscoverListener {
+            override fun onClick() {
+                tabLayout.selectTab(tabLayout.getTabAt(1), true)
+            }
+
+            override fun startBookPage(book: Book) {
+                val i = Intent(applicationContext, BookPageActivity::class.java)
+                i.putExtra("book", book)
+                startActivity(i)
+            }
+
+        }, getSharedPreferences("data", MODE_PRIVATE))
     }
 
 }

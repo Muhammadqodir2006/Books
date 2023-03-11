@@ -2,6 +2,7 @@ package uz.itschool.books.library
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,14 +15,17 @@ import uz.itschool.books.BookAPI
 import uz.itschool.books.BookPageActivity
 import uz.itschool.books.R
 
-class MyWishlistRecyclerAdapter1(val context: Context, val discoverListener: MyLibraryRecyclerAdapter.DiscoverListener) :
+class MyWishlistRecyclerAdapter1(val context: Context, val discoverListener: MyLibraryRecyclerAdapter.DiscoverListener, val sharedPreferences: SharedPreferences) :
     RecyclerView.Adapter<MyWishlistRecyclerAdapter1.ViewHolder>() {
-    private val bookList = BookAPI.getMyWishList()
+    private var bookList = BookAPI.getMyWishList(sharedPreferences)
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val image: ImageView = itemView.findViewById(R.id.shapeableImageView2)
         val bookName: TextView = itemView.findViewById(R.id.textView4)
         val authorName: TextView = itemView.findViewById(R.id.textView5)
+        init {
+            bookList = BookAPI.getMyWishList(sharedPreferences)
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

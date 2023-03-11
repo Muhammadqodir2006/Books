@@ -1,5 +1,6 @@
 package uz.itschool.books
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -26,6 +27,7 @@ class CheckPassword : AppCompatActivity() {
 
     private lateinit var binding: ActivityCheckPasswordBinding
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCheckPasswordBinding.inflate(layoutInflater)

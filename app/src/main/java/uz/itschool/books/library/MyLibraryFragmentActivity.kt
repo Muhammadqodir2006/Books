@@ -1,6 +1,7 @@
 package uz.itschool.books.library
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import uz.itschool.books.R
 import uz.itschool.books.databinding.FragmentMyLibraryBinding
 
-class MyLibraryFragmentActivity(val contexT: Context, val discoverListener: MyLibraryRecyclerAdapter.DiscoverListener) : Fragment() {
+class MyLibraryFragmentActivity(val contexT: Context, val discoverListener: MyLibraryRecyclerAdapter.DiscoverListener, val sharedPreferences: SharedPreferences) : Fragment() {
     private lateinit var myWishList_recyclerView : RecyclerView
     private lateinit var myLibrary_recyclerView : RecyclerView
     private lateinit var binding: FragmentMyLibraryBinding
@@ -35,7 +36,7 @@ class MyLibraryFragmentActivity(val contexT: Context, val discoverListener: MyLi
         myLibrary_recyclerView.adapter = MyLibraryRecyclerAdapter(contexT, discoverListener)
 
         myWishList_recyclerView.layoutManager = GridLayoutManager(contexT, 2, GridLayoutManager.VERTICAL, false)
-        myWishList_recyclerView.adapter = MyWishlistRecyclerAdapter1(contexT, discoverListener)
+        myWishList_recyclerView.adapter = MyWishlistRecyclerAdapter1(contexT, discoverListener, sharedPreferences)
 
         return binding.root
     }
