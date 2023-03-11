@@ -1,9 +1,13 @@
 package uz.itschool.books
 
+import android.content.SharedPreferences
+import androidx.appcompat.app.AppCompatActivity
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+
 abstract class BookAPI {
     companion object {
         val books = initBooks()
-        val wishLIst = ArrayList<Book>()
         val myLibrary = ArrayList<Book>()
 
         fun getBooks(genre: Genre): ArrayList<Book> {
@@ -117,8 +121,14 @@ abstract class BookAPI {
             books.add(Book("Atomic  12312", "James Clear", 2015, "https://www.creativeparamita.com/wp-content/uploads/2022/07/takes-time.jpg", "Bu kitob lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum", 3.4, Genre.PHYLOSOPHY ))
             return books
         }
-        fun getMyWishList(): ArrayList<Book> {
-            return wishLIst
+        fun getMyWishList(sharedPreferences: SharedPreferences): ArrayList<Book> {
+            val edit = sharedPreferences.edit()
+            val data: String = sharedPreferences.getString("wishList", "")!!
+            val gson = Gson()
+            val typeToken = object : TypeToken<ArrayList<Book>>(){}.type
+            val wishList = ArrayList<Book>()
+
+            return wishList
         }
         fun updateWishList(book: Book): ArrayList<Book> {
             if (wishLIst.contains(book)){
