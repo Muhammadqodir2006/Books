@@ -24,7 +24,7 @@ The **Books App** is a simple mobile application where users can explore a wide 
 
 1. Clone this repository:
     ```bash
-    git clone https://github.com/Muhammadqodir2006/BooksApp.git
+    git clone https://github.com/MuhammadqodirRustamov/BooksApp.git
     cd BooksApp
     ```
 
